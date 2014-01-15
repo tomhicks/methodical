@@ -1,0 +1,40 @@
+{
+  "name": "intercol.js",
+  "version": "0.0.1",
+  "description": "JavaScript interface assertion library",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomhicks/intercol.js.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "interface",
+    "protocol"
+  ],
+  "dependencies": {
+    "grunt": "0.4.2",
+    "grunt-cli": "0.1.11",
+    "requirejs": "2.1.9",
+    "underscore": "1.5.2"
+  },
+  "devDependencies": {
+    "connect": "2.12.0",
+    "coveralls": "2.6.1",
+    "jscoverage": "0.3.8",
+    "jshint": "2.3.0",
+    "mocha": "1.15.1",
+    "mocha-lcov-reporter": "0.0.1",
+    "sinon": "1.7.3",
+    "chai": "~1.8.1"
+  },
+  "author": "Tom Hicks",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/tomhicks/intercol.js/issues"
+  },
+  "homepage": "https://github.com/tomhicks/intercol.js"
+}

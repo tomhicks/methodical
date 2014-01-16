@@ -16,20 +16,19 @@
     "protocol"
   ],
   "dependencies": {
-    "grunt": "0.4.2",
-    "grunt-cli": "0.1.11",
-    "requirejs": "2.1.9",
     "underscore": "1.5.2"
   },
   "devDependencies": {
-    "connect": "2.12.0",
-    "coveralls": "2.6.1",
-    "jscoverage": "0.3.8",
+    "grunt": "0.4.2",
+    "grunt-cli": "0.1.11",
     "jshint": "2.3.0",
-    "mocha": "1.15.1",
-    "mocha-lcov-reporter": "0.0.1",
     "sinon": "1.7.3",
-    "chai": "~1.8.1"
+    "chai": "~1.8.1",
+    "grunt-shell": "~0.6.1",
+    "mocha": "~1.17.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "task": "~0.1.0",
+    "grunt-mocha-test": "~0.8.1"
   },
   "author": "Tom Hicks",
   "license": "BSD-2-Clause",

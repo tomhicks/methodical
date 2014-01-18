@@ -1,5 +1,5 @@
 {
-  "name": "intercol.js",
+  "name": "i.js",
   "version": "0.0.1",
   "description": "JavaScript interface assertion library",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomhicks/intercol.js.git"
+    "url": "https://github.com/tomhicks/i.js.git"
   },
   "keywords": [
     "JavaScript",
@@ -33,7 +33,7 @@
   "author": "Tom Hicks",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/tomhicks/intercol.js/issues"
+    "url": "https://github.com/tomhicks/i.js/issues"
   },
-  "homepage": "https://github.com/tomhicks/intercol.js"
+  "homepage": "https://github.com/tomhicks/i.js"
 }

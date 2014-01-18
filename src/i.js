@@ -77,17 +77,28 @@ I.prototype.check = function (object) {
 
 I.prototype.complete = function (object) {
 
-    if (!_.isObject(object)) {
-        object = {};
+    if(!_.isFunction(object) && !_.isObject(object)) {
+        throw new TypeError('Cannot complete a non-object');
     }
 
     _.each(this.getInterface().required, _.bind(function (value, key) {
         if (typeof object[key] !== value) {
-            if (value === 'function') {
-                object[key] = noOp;
-            }
+            object[key] = noOp;
         }
     }, this));
+};
+
+I.prototype.tryCall = function (object, method) {
+    var methodArguments = Array.prototype.slice.call(arguments, 2);
+    this.tryApply(object, method, methodArguments);
+};
+
+I.prototype.tryApply = function (object, method, args) {
+    if (_.isFunction(object[method])) {
+        object[method].apply(object, args);
+    } else if (this.getInterface().required[method] === 'function') {
+        object[method].apply(object, args);
+    }
 };
 
 module.exports = I;

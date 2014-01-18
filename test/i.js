@@ -1,5 +1,6 @@
 'use strict';
 var expect = require('chai').expect;
+var sinon = require('sinon');
 
 var I = require('../src/i');
 
@@ -66,6 +67,26 @@ describe('I', function() {
                 var i = new I(config);
 
                 expect(i.getInterface()).to.eql(config);
+            });
+
+            it('should take an array an turn it into required methods', function () {
+                var config = {
+                    required: ['method1', 'method2'],
+                    optional: ['method3', 'method4']
+                };
+
+                var i = new I(config);
+
+                expect(i.getInterface()).to.eql({
+                    required: {
+                        method1: 'function',
+                        method2: 'function'
+                    },
+                    optional: {
+                        method3: 'function',
+                        method4: 'function'
+                    }
+                });
             });
 
             it('should assume functions', function() {
@@ -191,6 +212,92 @@ describe('I', function() {
                 expect(object).to.respondTo('method1', 'method2');
             });
         });
+
+        describe('when asking to complete a non-object', function () {
+            it('should throw a type error for undefined', function () {
+                var i = new I(['method1']);
+
+                function completeGarbage () {
+                    i.complete(undefined);
+                }
+
+                expect(completeGarbage).to.throw(TypeError);
+
+            });
+
+            it('should work normally for a function', function () {
+                var i = new I(['method1']);
+                var fn = function () {};
+                
+                function completeAFunction () {
+                    i.complete(fn);
+                }
+
+                expect(completeAFunction).not.to.throw(TypeError);
+                expect(typeof fn.method1).to.equal('function');
+            });
+        });
+    });
+
+    describe('.tryCall', function () {
+        it('should execute the function if it exists', function () {
+            var i = new I(['method1']);
+            var object = {
+                method1: sinon.spy()
+            };
+            i.tryCall(object, 'method1');
+
+            expect(object.method1.called).to.be.true;
+        });
+
+        it('should throw an error if the passed method was required', function () {
+            var i = new I(['method1']);
+
+            function tryCall() {
+                i.tryCall({}, 'method1');
+            }
+
+            expect(tryCall).to.throw();
+        });
+
+        it('should not throw an error if the method is optional and does not exist', function () {
+            var i = new I({
+                optional: ['method1']
+            });
+
+            function tryCall() {
+                i.tryCall({}, 'method1');
+            }
+
+            expect(tryCall).not.to.throw();
+        });
+
+        it('should pass the correct arguments to called methods', function () {
+            var i = new I(['method1']);
+
+            var object = {
+                method1: sinon.spy()
+            };
+
+            i.tryCall(object, 'method1', 'arg1', 'arg2');
+
+            expect(object.method1.withArgs('arg1', 'arg2').calledOnce).to.be.true;
+        });
+
+        describe('.tryApply', function () {
+            it('should pass arguments correctly', function () {
+                var i = new I(['method1']);
+
+                var object = {
+                    method1: sinon.spy()
+                };
+
+                i.tryApply(object, 'method1', ['arg1', 'arg2']);
+
+                expect(object.method1.withArgs('arg1', 'arg2').calledOnce).to.be.true;
+            });
+        });
+
     });
 
 });

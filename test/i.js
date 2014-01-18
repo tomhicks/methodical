@@ -188,7 +188,8 @@ describe('I', function() {
 
                 i.complete(object);
 
-                expect(object).to.respondTo('method1', 'method2');
+                expect(object).to.respondTo('method4');
+                expect(object).to.respondTo('method3');
             });
         });
     });

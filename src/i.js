@@ -45,6 +45,8 @@ var I = function (interfaceDescription) {
     this._interface = buildInterface(interfaceDescription);
 };
 
+I.function = 'function';
+
 I.prototype.getInterface = function () {
     return this._interface;
 };

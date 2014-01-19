@@ -11,26 +11,26 @@ JavaScript does not support <a href="http://en.wikipedia.org/wiki/Interface_(com
 To do this, we end up with lots of boilerplate code, such as:
 
 ```javascript
-    function foo(bar) {
-        if (typeof bar.someMethod !== 'function' ||
-                typeof bar.anotherMethod !== 'function') {
-            throw new TypeError('bar must implement the someMethod and anotherMethod methods.');
-        }
+function foo(bar) {
+    if (typeof bar.someMethod !== 'function' ||
+            typeof bar.anotherMethod !== 'function') {
+        throw new TypeError('bar must implement the someMethod and anotherMethod methods.');
     }
+}
 ```
 
 and
 
 ```javascript
-    function foo(bar) {
-        if (typeof bar.someMethod === 'function') {
-            bar.someMethod();
-        }
-
-        if (typeof bar.anotherMethod === 'function') {
-            bar.anotherMethod();
-        }
+function foo(bar) {
+    if (typeof bar.someMethod === 'function') {
+        bar.someMethod();
     }
+
+    if (typeof bar.anotherMethod === 'function') {
+        bar.anotherMethod();
+    }
+}
 ```
 
 Finally, as JavaScript developers we're now plugging together more and more 3rd party modules, and knowing how to use the APIs exposed to us becomes more important. Currently, we have to read documentation (maybe above the function, maybe at the top of the file in an ```@description``` docblock, maybe on the web), read the first few lines of a method if the expectations are helpfully asserted up front (like the first example above), or sometimes just dig through the errors that our console throws up as we hit points in the code that expect an object to have a particular shape.
@@ -51,57 +51,57 @@ i.js gives us an implementation of interfaces in JavaScript. It lets us:
 ### Creating an interface
 
 ```javascript
-    var I = require('i');
-    var myInterface = new I({
-        required: {
-            requiredMethod1: I.function,
-            requiredMethod2: I.function
-        },
-        optional: {
-            optionalMethod1: I.function,
-            optionalMethod2: I.function
-        }
-    });
+var I = require('i');
+var myInterface = new I({
+    required: {
+        requiredMethod1: I.function,
+        requiredMethod2: I.function
+    },
+    optional: {
+        optionalMethod1: I.function,
+        optionalMethod2: I.function
+    }
+});
 
-    var interfaceWithOnlyRequiredMethods = new I(['requiredMethod1', 'requiredMethod2']);
+var interfaceWithOnlyRequiredMethods = new I(['requiredMethod1', 'requiredMethod2']);
 ```
 
 ### Using an interface
 
 ```javascript    
-    function mustPassProperObject(object) {
-        myInterface.check(object);
+function mustPassProperObject(object) {
+    myInterface.check(object);
 
-        // if we got here, we can call these methods safely
-        object.requiredMethod1();
-        object.requiredMethod2();
-    }
+    // if we got here, we can call these methods safely
+    object.requiredMethod1();
+    object.requiredMethod2();
+}
 
-    // throws a TypeError, mentioning the missing methods.
-    mustPassProperObject({});
+// throws a TypeError, mentioning the missing methods.
+mustPassProperObject({});
 
-    function callOptionalMethods(object) {
-        // makes optional methods available
-        myInterface.complete(object);
+function callOptionalMethods(object) {
+    // makes optional methods available
+    myInterface.complete(object);
 
-        // object will have these methods added
-        myInterface.optionalMethod1();
-        myInterface.optionalMethod2();
-    }
+    // object will have these methods added
+    myInterface.optionalMethod1();
+    myInterface.optionalMethod2();
+}
 
-    // will not throw a TypeError, as optional methods are added to the object
-    callOptionalMethods({});
+// will not throw a TypeError, as optional methods are added to the object
+callOptionalMethods({});
 
-    function checkBeforeCalling(object) {
-        myInterface.tryCall(object, 'optionalMethod1', arg1, arg2);
-        myInterface.tryApply(object, 'optionalMethod2', [arg1, arg2]);
+function checkBeforeCalling(object) {
+    myInterface.tryCall(object, 'optionalMethod1', arg1, arg2);
+    myInterface.tryApply(object, 'optionalMethod2', [arg1, arg2]);
 
-        // this will throw an error, as tryCall does not guard against required method calls
-        myInterface.tryCall(object, 'requiredMethod1');
-    }
+    // this will throw an error, as tryCall does not guard against required method calls
+    myInterface.tryCall(object, 'requiredMethod1');
+}
 
-    // will throw a TypeError because requiredMethod1 does not exist
-    checkBeforeCalling({});
+// will throw a TypeError because requiredMethod1 does not exist
+checkBeforeCalling({});
 ```
 
 ### Notes
@@ -121,6 +121,7 @@ I would like to add more features, not necessarily in this order, to i.js. I wou
 - declare that an object must have a primitive as a property (e.g. Number or String)
 - declare that an object must have an object that implements another interface as a property (nested interfaces)
 - declare an interface that extends another interface
+- declare an interface based off an existing object
 - allow objects to be restored to their original state after having been ```complete```d
 - expose ```tryCall``` and ```tryApply``` as methods on the I object, so that I can guard against method calls even without using an interface
 - support AMD and ```window``` global variable so that I can use i.js in other environments

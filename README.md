@@ -124,3 +124,7 @@ I would like to add more features, not necessarily in this order, to i.js. I wou
 - allow objects to be restored to their original state after having been ```complete```d
 - expose ```tryCall``` and ```tryApply``` as methods on the I object, so that I can guard against method calls even without using an interface
 - support AMD and ```window``` global variable so that I can use i.js in other environments
+
+## License
+
+i.js is released under the [MIT License](http://www.opensource.org/licenses/MIT).

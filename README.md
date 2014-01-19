@@ -11,9 +11,9 @@ JavaScript does not support <a href="http://en.wikipedia.org/wiki/Interface_(com
 To do this, we end up with lots of boilerplate code, such as:
 
 ```javascript
-    function foo (bar) {
+    function foo(bar) {
         if (typeof bar.someMethod !== 'function' ||
-            typeof bar.anotherMethod !== 'function') {
+                typeof bar.anotherMethod !== 'function') {
             throw new TypeError('bar must implement the someMethod and anotherMethod methods.');
         }
     }
@@ -22,7 +22,7 @@ To do this, we end up with lots of boilerplate code, such as:
 and
 
 ```javascript
-    function foo (bar) {
+    function foo(bar) {
         if (typeof bar.someMethod === 'function') {
             bar.someMethod();
         }

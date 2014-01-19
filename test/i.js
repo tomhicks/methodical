@@ -272,6 +272,16 @@ describe('I', function() {
             expect(tryCall).not.to.throw();
         });
 
+        it('should not throw an error if the method is not mentioned and does not exist', function () {
+            var i = new I(['method1']);
+
+            function tryCall() {
+                i.tryCall({}, 'method2');
+            }
+
+            expect(tryCall).not.to.throw();
+        });
+
         it('should pass the correct arguments to called methods', function () {
             var i = new I(['method1']);
 

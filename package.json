@@ -25,10 +25,8 @@
     "jshint": "2.3.0",
     "sinon": "1.7.3",
     "chai": "~1.8.1",
-    "grunt-shell": "~0.6.1",
     "mocha": "~1.17.0",
     "grunt-contrib-watch": "~0.5.3",
-    "task": "~0.1.0",
     "grunt-mocha-test": "~0.8.1",
     "coveralls": "~2.6.1",
     "istanbul": "~0.2.3"

@@ -159,26 +159,26 @@ describe('I', function() {
                 function testInterface1 () {
                     i.check(undefined);
                 }
-                expect(testInterface1).throw('method1');
-                expect(testInterface1).throw('method2');
+                expect(testInterface1).to.throw('method1');
+                expect(testInterface1).to.throw('method2');
 
                 function testInterface2 () {
                     i.check(null);
                 }
-                expect(testInterface2).throw('method1');
-                expect(testInterface2).throw('method2');
+                expect(testInterface2).to.throw('method1');
+                expect(testInterface2).to.throw('method2');
 
                 function testInterface3 () {
                     i.check(false);
                 }
-                expect(testInterface3).throw('method1');
-                expect(testInterface3).throw('method2');
+                expect(testInterface3).to.throw('method1');
+                expect(testInterface3).to.throw('method2');
 
                 function testInterface4 () {
                     i.check([]);
                 }
-                expect(testInterface4).throw('method1');
-                expect(testInterface4).throw('method2');
+                expect(testInterface4).to.throw('method1');
+                expect(testInterface4).to.throw('method2');
 
             });
         });

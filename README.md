@@ -6,7 +6,7 @@ JavaScript library that provides support for enforcing objects to implement give
 
 ## Motivation
 
-JavaScript does not support [interfaces](http://en.wikipedia.org/wiki/Interface_(computing)) natively. Often though, we do want to be able to determine that an object (usually one passed as a parameter to a function) has some given methods on it, and also conditionally call a method on an object if it has the method available.
+JavaScript does not support <a href="http://en.wikipedia.org/wiki/Interface_(computing)">interfaces</a> natively. Often though, we do want to be able to determine that an object (usually one passed as a parameter to a function) has some given methods on it, and also conditionally call a method on an object if it has the method available.
 
 To do this, we end up with lots of boilerplate code, such as:
 

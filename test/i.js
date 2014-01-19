@@ -4,18 +4,18 @@ var sinon = require('sinon');
 
 var I = require('../src/i');
 
-describe('I', function() {
-    it('should be available', function() {
+describe('I', function () {
+    it('should be available', function () {
         expect(I).to.be.instanceof(Function);
     });
 
-    it('should create I instances', function() {
+    it('should create I instances', function () {
         /* jshint expr:true */
         expect(new I()).to.be.ok;
     });
 
-    describe('.getInterface', function() {
-        it('should build a blank interface when nothing is passed', function() {
+    describe('.getInterface', function () {
+        it('should build a blank interface when nothing is passed', function () {
             var i = new I();
 
             expect(i.getInterface()).to.eql({
@@ -23,8 +23,8 @@ describe('I', function() {
             });
         });
 
-        describe('when an array is passed', function() {
-            it('should build required methods', function() {
+        describe('when an array is passed', function () {
+            it('should build required methods', function () {
                 var i = new I(['method1', 'method2']);
                 expect(i.getInterface()).to.eql({
                     required: {
@@ -34,7 +34,7 @@ describe('I', function() {
                 });
             });
 
-            it('should ignore non-strings', function() {
+            it('should ignore non-strings', function () {
                 var i = new I([{}, 'method1']);
                 expect(i.getInterface()).to.eql({
                     required: {
@@ -43,7 +43,7 @@ describe('I', function() {
                 });
             });
 
-            it('should ignore empty strings', function() {
+            it('should ignore empty strings', function () {
                 var i = new I(['', 'method1']);
                 expect(i.getInterface()).to.eql({
                     required: {
@@ -53,8 +53,8 @@ describe('I', function() {
             });
         }); // 'when an array is passed'
 
-        describe('when an object is passed', function() {
-            it('should copy the required and optional properties', function() {
+        describe('when an object is passed', function () {
+            it('should copy the required and optional properties', function () {
                 var config = {
                     required: {
                         method1: 'function'
@@ -89,7 +89,7 @@ describe('I', function() {
                 });
             });
 
-            it('should assume functions', function() {
+            it('should assume functions', function () {
                 var i = new I({
                     required: {
                         method1: 'function'
@@ -113,12 +113,12 @@ describe('I', function() {
 
     });
 
-    describe('.check', function() {
-        describe('when checking an object required methods', function() {
+    describe('.check', function () {
+        describe('when checking an object required methods', function () {
             it('should pass for valid objects', function () {
                 var i = new I(['method1']);
 
-                function testInterface () {
+                function testInterface() {
                     i.check({
                         method1: function () {}
                     });
@@ -131,7 +131,7 @@ describe('I', function() {
             it('should throw for unconforming objects', function () {
                 var i = new I(['method1']);
 
-                function testInterface () {
+                function testInterface() {
                     i.check({
                         method2: function () {}
                     });
@@ -145,7 +145,7 @@ describe('I', function() {
                 var i = new I(['method1']);
                 i.name = 'My interface';
 
-                function testInterface () {
+                function testInterface() {
                     i.check({});
                 }
 
@@ -156,25 +156,25 @@ describe('I', function() {
             it('should name all missing methods when passed some nonsense object to check', function () {
                 var i = new I(['method1', 'method2']);
 
-                function testInterface1 () {
+                function testInterface1() {
                     i.check(undefined);
                 }
                 expect(testInterface1).to.throw('method1');
                 expect(testInterface1).to.throw('method2');
 
-                function testInterface2 () {
+                function testInterface2() {
                     i.check(null);
                 }
                 expect(testInterface2).to.throw('method1');
                 expect(testInterface2).to.throw('method2');
 
-                function testInterface3 () {
+                function testInterface3() {
                     i.check(false);
                 }
                 expect(testInterface3).to.throw('method1');
                 expect(testInterface3).to.throw('method2');
 
-                function testInterface4 () {
+                function testInterface4() {
                     i.check([]);
                 }
                 expect(testInterface4).to.throw('method1');
@@ -184,7 +184,7 @@ describe('I', function() {
         });
     });
 
-    describe('.complete', function() {
+    describe('.complete', function () {
         describe('when asking to complete an object', function () {
             it('should leave objects alone that already conform', function () {
                 var i = new I(['method1']);
@@ -217,7 +217,7 @@ describe('I', function() {
             it('should throw a type error for undefined', function () {
                 var i = new I(['method1']);
 
-                function completeGarbage () {
+                function completeGarbage() {
                     i.complete(undefined);
                 }
 
@@ -228,8 +228,8 @@ describe('I', function() {
             it('should work normally for a function', function () {
                 var i = new I(['method1']);
                 var fn = function () {};
-                
-                function completeAFunction () {
+
+                function completeAFunction() {
                     i.complete(fn);
                 }
 
@@ -293,21 +293,20 @@ describe('I', function() {
 
             expect(object.method1.withArgs('arg1', 'arg2').calledOnce).to.be.true;
         });
+    });
 
-        describe('.tryApply', function () {
-            it('should pass arguments correctly', function () {
-                var i = new I(['method1']);
+    describe('.tryApply', function () {
+        it('should pass arguments correctly', function () {
+            var i = new I(['method1']);
 
-                var object = {
-                    method1: sinon.spy()
-                };
+            var object = {
+                method1: sinon.spy()
+            };
 
-                i.tryApply(object, 'method1', ['arg1', 'arg2']);
+            i.tryApply(object, 'method1', ['arg1', 'arg2']);
 
-                expect(object.method1.withArgs('arg1', 'arg2').calledOnce).to.be.true;
-            });
+            expect(object.method1.withArgs('arg1', 'arg2').calledOnce).to.be.true;
         });
-
     });
 
 });

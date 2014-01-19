@@ -2,7 +2,7 @@
 
 var _ = require('underscore');
 
-function noOp () {}
+function noOp() {}
 
 function addFunctionNameToObject(functionName, object) {
     if (functionName && _.isString(functionName)) {
@@ -77,7 +77,7 @@ I.prototype.check = function (object) {
 
 I.prototype.complete = function (object) {
 
-    if(!_.isFunction(object) && !_.isObject(object)) {
+    if (!_.isFunction(object) && !_.isObject(object)) {
         throw new TypeError('Cannot complete a non-object');
     }
 

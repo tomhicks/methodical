@@ -28,7 +28,8 @@
     "mocha": "~1.17.0",
     "grunt-contrib-watch": "~0.5.3",
     "task": "~0.1.0",
-    "grunt-mocha-test": "~0.8.1"
+    "grunt-mocha-test": "~0.8.1",
+    "coveralls": "~2.6.1"
   },
   "author": "Tom Hicks",
   "license": "BSD-2-Clause",

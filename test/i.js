@@ -14,6 +14,10 @@ describe('I', function () {
         expect(new I()).to.be.ok;
     });
 
+    it('should have a function property with the correct value', function () {
+        expect(I.function).to.equal('function');
+    });
+
     describe('.getInterface', function () {
         it('should build a blank interface when nothing is passed', function () {
             var i = new I();

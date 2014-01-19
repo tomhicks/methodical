@@ -45,6 +45,8 @@ var I = function (interfaceDescription) {
     this._interface = buildInterface(interfaceDescription);
 };
 
+I.function = 'function';
+
 I.fromConstructor = function (Constructor) {
     var requiredMethods;
 

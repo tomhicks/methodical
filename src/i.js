@@ -45,6 +45,23 @@ var I = function (interfaceDescription) {
     this._interface = buildInterface(interfaceDescription);
 };
 
+I.fromConstructor = function (Constructor) {
+    var requiredMethods;
+
+    if (_.isFunction(Constructor)) {
+        requiredMethods = [];
+        _.each(Constructor.prototype, function (value, key) {
+            if (_.isFunction(value)) {
+                requiredMethods.push(key);
+            }
+        });
+    } else {
+        throw new TypeError('A function must be passed');
+    }
+
+    return new I(requiredMethods);
+};
+
 I.prototype.getInterface = function () {
     return this._interface;
 };

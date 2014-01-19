@@ -317,4 +317,51 @@ describe('I', function () {
         });
     });
 
+    describe('.fromConstructor', function () {
+        it('should build an interface from a constructor function', function () {
+            var Constructor = function () {};
+
+            Constructor.prototype.method1 = function () {};
+            Constructor.prototype.nonMethod = 'string';
+
+            var i = I.fromConstructor(Constructor);
+
+            expect(i.getInterface()).to.eql({
+                required: {
+                    method1: 'function'
+                }
+            });
+        });
+
+        it('should throw an error if non-function is passed', function () {
+            var i;
+
+            function withUndefined() {
+                i = I.fromConstructor();
+            }
+            expect(withUndefined).to.throw(TypeError);
+
+            function withString() {
+                i = I.fromConstructor('string');
+            }
+            expect(withString).to.throw(TypeError);
+
+            function withObject() {
+                i = I.fromConstructor({});
+            }
+            expect(withObject).to.throw(TypeError);
+
+            function withNull() {
+                i = I.fromConstructor({});
+            }
+            expect(withNull).to.throw(TypeError);
+
+            function withBoolean() {
+                i = I.fromConstructor({});
+            }
+            expect(withBoolean).to.throw(TypeError);
+
+        });
+    });
+
 });

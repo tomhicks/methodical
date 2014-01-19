@@ -209,7 +209,15 @@ describe('I', function () {
 
                 i.complete(object);
 
-                expect(object).to.respondTo('method1', 'method2');
+                function callAddedMethod() {
+                    object.method1();
+                }
+
+                expect(object).to.respondTo('method1');
+                expect(object).to.respondTo('method2');
+
+                expect(callAddedMethod).not.to.throw();
+
             });
         });
 

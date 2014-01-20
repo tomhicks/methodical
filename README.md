@@ -106,6 +106,10 @@ checkBeforeCalling({});
 
 ### Notes
 
+### Name
+
+Originally this project was named i.js, so you will see i and I used around the place. I is used as a shorthand for Interface, so that'll probably stay in the examples.
+
 #### Optional methods
 
 On the face of it, there's not a lot of point in delcaring optional methods in an interface. However, what they do provide is documentation, effectively stating "here is some functionality you can use if you want, but you don't have to." These are extensively used in Apple's Objective-C libraries, most often for delegate callback methods, and probably in other libraries, too.

@@ -4,13 +4,13 @@ var sinon = require('sinon');
 
 var I = require('../src/i');
 
+/* jshint expr:true */
 describe('I', function () {
     it('should be available', function () {
         expect(I).to.be.instanceof(Function);
     });
 
     it('should create I instances', function () {
-        /* jshint expr:true */
         expect(new I()).to.be.ok;
     });
 

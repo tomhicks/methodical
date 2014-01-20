@@ -1,4 +1,4 @@
-I.js
+Methodical
 =====
 [![Build Status](https://travis-ci.org/tomhicks/i.js.png?branch=master)](https://travis-ci.org/tomhicks/i.js) [![Coverage Status](https://coveralls.io/repos/tomhicks/i.js/badge.png?branch=master)](https://coveralls.io/r/tomhicks/i.js?branch=master)
 
@@ -39,7 +39,7 @@ This is pretty much what interfaces in other programming languages are for. Alth
 
 ## The solution
 
-i.js gives us an implementation of interfaces in JavaScript. It lets us:
+Methodical gives us an implementation of interfaces in JavaScript. It lets us:
 
 1. declare our interfaces in a standardised way, in their own file, and with their own documentation.
 2. check an object to ensure it conforms to an interface, throwing descriptive and consistent errors if not.
@@ -116,7 +116,7 @@ This is primarily there because at some point in the future we might want to ass
 
 ## Future work
 
-I would like to add more features, not necessarily in this order, to i.js. I would like to be able to:
+I would like to add more features, not necessarily in this order, to Methodical. I would like to be able to:
 
 - declare that an object must have a primitive as a property (e.g. Number or String)
 - declare that an object must have an object that implements another interface as a property (nested interfaces)
@@ -124,8 +124,8 @@ I would like to add more features, not necessarily in this order, to i.js. I wou
 - declare an interface based off an existing object
 - allow objects to be restored to their original state after having been ```complete```d
 - expose ```tryCall``` and ```tryApply``` as methods on the I object, so that I can guard against method calls even without using an interface
-- support AMD and ```window``` global variable so that I can use i.js in other environments
+- support AMD and ```window``` global variable so that I can use Methodical in other environments
 
 ## License
 
-i.js is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+Methodical is released under the [MIT License](http://www.opensource.org/licenses/MIT).

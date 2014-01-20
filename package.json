@@ -1,6 +1,6 @@
 {
   "name": "i.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript interface assertion library",
   "main": "src/i.js",
   "scripts": {

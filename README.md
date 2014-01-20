@@ -1,6 +1,6 @@
 Methodical
 =====
-[![Build Status](https://travis-ci.org/tomhicks/i.js.png?branch=master)](https://travis-ci.org/tomhicks/i.js) [![Coverage Status](https://coveralls.io/repos/tomhicks/i.js/badge.png?branch=master)](https://coveralls.io/r/tomhicks/i.js?branch=master)
+[![Build Status](https://travis-ci.org/tomhicks/methodical.png?branch=master)](https://travis-ci.org/tomhicks/methodical) [![Coverage Status](https://coveralls.io/repos/tomhicks/methodical/badge.png?branch=master)](https://coveralls.io/r/tomhicks/methodical?branch=master)
 
 JavaScript library that provides support for enforcing objects to implement given interfaces.
 

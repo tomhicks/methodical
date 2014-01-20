@@ -1,5 +1,5 @@
 {
-  "name": "i.js",
+  "name": "methodical",
   "version": "0.0.2",
   "description": "JavaScript interface assertion library",
   "main": "src/i.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomhicks/i.js.git"
+    "url": "https://github.com/tomhicks/methodical.git"
   },
   "keywords": [
     "JavaScript",
@@ -34,7 +34,7 @@
   "author": "Tom Hicks <thomas.hicks1@googlemail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tomhicks/i.js/issues"
+    "url": "https://github.com/tomhicks/methodical/issues"
   },
-  "homepage": "https://github.com/tomhicks/i.js"
+  "homepage": "https://github.com/tomhicks/methodical"
 }

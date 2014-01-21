@@ -114,7 +114,7 @@ Originally this project was named i.js, so you will see i and I used around the 
 
 On the face of it, there's not a lot of point in delcaring optional methods in an interface. However, what they do provide is documentation, effectively stating "here is some functionality you can use if you want, but you don't have to." These are extensively used in Apple's Objective-C libraries, most often for delegate callback methods, and probably in other libraries, too.
 
-#### The use of I.function in interface declarations
+#### The use of Methodical.function in interface declarations
 
 This is primarily there because at some point in the future we might want to assert other property types, such as Number, Boolean, and even deeply-nested object structures.
 
@@ -127,7 +127,7 @@ I would like to add more features, not necessarily in this order, to Methodical.
 - declare an interface that extends another interface
 - declare an interface based off an existing object
 - allow objects to be restored to their original state after having been ```complete```d
-- expose ```tryCall``` and ```tryApply``` as methods on the I object, so that I can guard against method calls even without using an interface
+- expose ```tryCall``` and ```tryApply``` as methods on the Methodical object, so that I can guard against method calls even without using an interface
 - support AMD and ```window``` global variable so that I can use Methodical in other environments
 
 ## License

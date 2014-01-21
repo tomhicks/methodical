@@ -41,13 +41,13 @@ function buildInterface(interfaceDescription) {
     return result;
 }
 
-var I = function (interfaceDescription) {
+var Methodical = function (interfaceDescription) {
     this._interface = buildInterface(interfaceDescription);
 };
 
-I.function = 'function';
+Methodical.function = 'function';
 
-I.fromConstructor = function (Constructor) {
+Methodical.fromConstructor = function (Constructor) {
     var requiredMethods;
 
     if (_.isFunction(Constructor)) {
@@ -61,14 +61,14 @@ I.fromConstructor = function (Constructor) {
         throw new TypeError('A function must be passed');
     }
 
-    return new I(requiredMethods);
+    return new Methodical(requiredMethods);
 };
 
-I.prototype.getInterface = function () {
+Methodical.prototype.getInterface = function () {
     return this._interface;
 };
 
-I.prototype.check = function (object) {
+Methodical.prototype.check = function (object) {
     var errors = [];
 
     // ensures that if we pass garbage in, we get sensible error messages
@@ -94,7 +94,7 @@ I.prototype.check = function (object) {
 
 };
 
-I.prototype.complete = function (object) {
+Methodical.prototype.complete = function (object) {
 
     if (!_.isFunction(object) && !_.isObject(object)) {
         throw new TypeError('Cannot complete a non-object');
@@ -107,12 +107,12 @@ I.prototype.complete = function (object) {
     }, this));
 };
 
-I.prototype.tryCall = function (object, method) {
+Methodical.prototype.tryCall = function (object, method) {
     var methodArguments = Array.prototype.slice.call(arguments, 2);
     this.tryApply(object, method, methodArguments);
 };
 
-I.prototype.tryApply = function (object, method, args) {
+Methodical.prototype.tryApply = function (object, method, args) {
     if (_.isFunction(object[method])) {
         object[method].apply(object, args);
     } else if (this.getInterface().required[method] === 'function') {
@@ -120,4 +120,4 @@ I.prototype.tryApply = function (object, method, args) {
     }
 };
 
-module.exports = I;
+module.exports = Methodical;

@@ -51,7 +51,7 @@ Methodical gives us an implementation of interfaces in JavaScript. It lets us:
 ### Creating an interface
 
 ```javascript
-var I = require('i');
+var I = require('methodical');
 var myInterface = new I({
     required: {
         requiredMethod1: I.function,

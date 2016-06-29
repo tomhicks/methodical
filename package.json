@@ -17,6 +17,7 @@
     "protocol"
   ],
   "dependencies": {
+    "amdefine": "~1",
     "underscore": "1.5.2"
   },
   "devDependencies": {
